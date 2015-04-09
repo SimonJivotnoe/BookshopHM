@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <link rel="stylesheet" type="text/css" href="templates/css/style.css"/>
+    <script src="templates/js/jquery-1.11.2.min.js"></script>
+    <script src="templates/js/bookshop.js"></script>
+    <script src="templates/js/ajaxQueries.js"></script>
+    <title>HomePage</title>
+</head>
+
+<body>
+
+<div class="main col-md-12 navbar-fixed-top">
+    <div class="col-md-7 col-md-offset-5 newcomer">%NEWCOMER%</div>
+    <div class="col-md-2 logo">
+        <a class="navbar-brand" href="/~user1/PHP/Bookshop/index.php"><img src="templates/images/modest.png"/></a>
+    </div>
+    <div class="col-md-3 modest">
+        <div class="col-md-5">
+            <div id="buttonA">
+                <ul class="hover">
+                    <li class="hoverAuthors">
+                        <span class="menuDropDown">%AUTHORS%
+                           </span>
+                        <ul class="fileAuthors">
+                        </ul>
+                    <li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div id="buttonG">
+                <ul class="hover">
+                    <li class="hoverGenres">
+                            <span class="menuDropDown">%GENRES%
+                            </span>
+                        <ul class="fileGenres">
+                        </ul>
+                    <li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    %AUTHORIZATION%
+<div class="col-md-1">
+    <div class="lang">
+        <form method="POST">
+        <input type="submit" class="btn btn-warning" name="lang" value="en"/></form>
+    </div>
+    <div class="lang">
+        <form method="POST">
+            <input type="submit" class="btn btn-warning" name="lang" value="ru"/></form>
+    </div>
+</div>
+    <div class="col-md-1">
+        <a href="admin/index.php">ADMIN</a>
+    </div>
+</div>
+<div class="container">
+    <div class="col-md-2 col-md-offset-5">
+        <h1 class="booksList">%BOOKS%</h1>
+    </div>
+    <div class="col-md-5 fake">
+        &nbsp
+    </div>
+    <div class="product-index">
+
+    </div>
+
+
+</div>
+
+
+
+<div class="clr"></div>
+
+<!-- Latest compiled and minified CSS -->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="templates/libs/bootstrap/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
+<link rel="stylesheet" href="templates/libs/bootstrap/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+<script src="templates/libs/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

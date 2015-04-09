@@ -1,0 +1,163 @@
+body {
+    background: url("../images/logo.jpg");
+}
+
+.clr {
+    clear: both;
+}
+
+.main {
+    margin-top: -25px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    background: rgb(125, 126, 125); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(125, 126, 125, 1)), color-stop(100%, rgba(14, 14, 14, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d7e7d', endColorstr='#0e0e0e', GradientType=0); /* IE6-9 */
+
+}
+.container {
+background-color: #7496a7;
+    min-height: 100vh;
+    margin-top: 120px;
+	padding-top:20px; 
+}
+.modest {
+    vert-align: 50%;
+    padding-bottom: 20px;
+    margin-top:25px;
+    z-index: 1000;
+    cursor: pointer;
+}
+.login {
+    margin-top: 25px;
+}
+.cart {
+    font-size:35px;
+}
+.cabinet {
+    font-size:35px;
+    margin-top: 32px;
+}
+.inCart {
+    color: white;
+    font-size:20px;
+    margin-top: -10px;
+}
+.lang{
+    margin-top: 10px;
+}
+.items, .price {
+    margin-left: 10px;
+}
+#buttonA, #buttonG {
+    height: 32px;
+    width: 184px;
+    margin: auto;
+}
+
+ul, li {
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+.fileAuthors {
+    display:none;
+    width:200px;
+    border: 1px solid #1c1c1c;
+}
+.fileGenres {
+    display:none;
+    width:200px;
+    border: 1px solid #1c1c1c;
+}
+
+.fileAuthors li{
+    background-color: #302f2f;
+}
+.fileGenres li {
+    background-color: #302f2f;
+}
+
+.fileAuthors li a{
+    color:#FFFFFF;
+    text-decoration:none;
+    padding:10px;
+    display:block;
+}
+.fileGenres li a{
+    color:#FFFFFF;
+    text-decoration:none;
+    padding:10px;
+    display:block;
+}
+.fileAuthors li a:hover{
+    padding:10px;
+    font-weight:bold;
+    color: #F00880;
+}
+.fileGenres li a:hover {
+    padding:10px;
+    font-weight:bold;
+    color: #F00880;
+}
+.menuDropDown {
+    text-shadow: 1px 1px 2px black, 0 0 1em;
+    color: #285f8f;
+    font-size: 25px;
+}
+.content {
+    text-align: center;
+    max-width: 270px;
+    margin-right: 5px;
+    cursor: pointer;
+    margin-left:9px
+}
+.bookWrapper {
+    min-height: 386px;
+    max-height: 386px;
+}
+.price {
+    font-weight: bold;
+}
+.booksList {
+    text-shadow: 1px 1px 2px black, 0 0 1em;
+    color: white;
+    cursor: pointer;
+}
+.fake {
+    min-height: 70px !important;
+}
+.newcomer {
+    font-weight:bold;
+    color: #F00880;
+}
+
+.wellcome{
+    font-weight:bold;
+    color: #F00880;
+    margin-top: 30px;
+    text-align: right;
+}
+.wellcomeGuest{
+    font-weight:bold;
+    color: #F00880;
+}
+.logOff {
+    margin-top: 20px;
+}
+
+.well {
+    background: rgb(22, 105, 173);
+}
+.image {
+    box-shadow: 0 10px 15px rgba(0,0,0,.6);
+}
+.registration{
+    text-align:right;
+}

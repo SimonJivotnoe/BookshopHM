@@ -1,0 +1,25 @@
+					<form method="POST" action="index.php?page=books_admin_ctrl&action=add&form_key=valid_value">
+						<p><label>							
+							name<input type="text" name="name">
+						</p></label>
+						<p><label>							
+							description<textarea name='description'>
+							</textarea>
+						</p></label>
+						<p><label>							
+							price<input type="number" name="price">
+						</p></label>
+						<p><label>							
+							year<input type="datetime" name="year">
+						</p></label>
+						<p><label>							
+							image<input type="text" name="image" placeholder='ThreeComrades.jpg'>
+						</p></label>
+						<p><select multiple name='author[]'>
+							###AUTHORS###
+						</select></p>
+						<p><select multiple name='genre[]'>
+							###GENRES###
+						</select></p>
+						<p><input type="submit" value="Add"></p>
+					</form>

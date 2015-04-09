@@ -1,0 +1,16 @@
+.homeButton {
+    background-color: rgba(53, 44, 44, 0.5);
+    height: 100vh;
+    color: #080808;
+}
+.glyphicon-chevron-left {
+    margin-top: 50vh;
+}
+
+.homeButton:hover {
+    background-color: rgba(53, 44, 44, 0.8);
+}
+
+.err {
+    color: red;
+}

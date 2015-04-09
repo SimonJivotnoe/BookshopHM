@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ISTRINGTABLE ID="joomla" LANG="en">
+    <ISTRING>
+        <KEY>BOOKS</KEY>
+        <VALUE>Books</VALUE>
+    </ISTRING>
+    <ISTRING>
+        <KEY>AUTHORS</KEY>
+        <VALUE>Authors</VALUE>
+    </ISTRING>
+    <ISTRING>
+            <KEY>GENRES</KEY>
+            <VALUE>Genres</VALUE>
+    </ISTRING>
+     <ISTRING>
+                <KEY>WELLCOMEGUEST</KEY>
+                <VALUE>WELLCOME, Guest!</VALUE>
+        </ISTRING>
+        <ISTRING>
+    <KEY>USER LOGIN</KEY>
+  <VALUE>Login</VALUE>
+</ISTRING>
+<ISTRING>
+    <KEY>USER PASSWORD</KEY>
+  <VALUE>Password</VALUE>
+</ISTRING>
+<ISTRING>
+    <KEY>EMAIL ADDRESS</KEY>
+  <VALUE>Email address</VALUE>
+</ISTRING>
+</ISTRINGTABLE>
