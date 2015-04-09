@@ -4,7 +4,6 @@ include dirname(__FILE__). '/../models/DataBaseModel.php';
 include dirname(__FILE__). '/../config.php';
 class ValidatorModelTest extends PHPUnit_Framework_TestCase {
 	public function testvalidateInputs(){
-		$obj = new ValidatorModel();
 		$name = 'test';
 		$pass = 1111;
 		$email = 'test@mail.ru';

@@ -12,18 +12,18 @@ class ConfirmOrderModel {
 		return $this->resArr;
 		}
 
-    public function getQuantityAndPrice(){
+    public function getQuantityAndPrice($user_id){
         $pdo = DataBaseModel::connect();
-        $user_id = $_SESSION[ 'BookshopID' ];
+        //$user_id = $_SESSION[ 'BookshopID' ];
         $res = $pdo->select("b.price, b.id, c.quantity, b.name, b.image ")
             ->from("books b JOIN cart c ON c.book_id=b.id")
             ->where("c.user_id ='$user_id'")
             ->exec();
         return $res;
     }
-    public function getDiscount(){
+    public function getDiscount($user_id){
         $pdo = DataBaseModel::connect();
-        $user_id = $_SESSION[ 'BookshopID' ];
+        //$user_id = $_SESSION[ 'BookshopID' ];
         $res = $pdo->select("user_discount ")
             ->from("users")
             ->where("user_id ='$user_id'")
@@ -72,6 +72,7 @@ class ConfirmOrderModel {
                 $pdo->delete("cart")
                     ->whereD("user_id = '$user_id'")
                     ->execInsert();
+					return true;
         }
     }
 } 

@@ -10,11 +10,12 @@ class Confirmorderctrl {
             header('Location: /index.php?page=registrationctrl');
             exit;
         } else {
+				$user_id = $_SESSION[ 'BookshopID' ];
             if (empty($_POST['payment'])) {
                 $objView = DataContModel::getInstance();
                 $objModel = new ConfirmOrderModel();
-                $quantityAndPrice=$objModel->getQuantityAndPrice();
-                $discount=$objModel->getDiscount();
+                $quantityAndPrice=$objModel->getQuantityAndPrice($user_id);
+                $discount=$objModel->getDiscount($user_id);
                 $payment=$objModel->getPayment();
                 $this->arr['quantityAndPrice'] = $quantityAndPrice;
                 $this->arr['discount'] = $discount;
@@ -22,13 +23,15 @@ class Confirmorderctrl {
                 $objView->setStartPage('confirmorder.html')->setData($this->arr);
             } else {
                 $objModel = new ConfirmOrderModel();
-                $quantityAndPrice=$objModel->getQuantityAndPrice();
-                $discount=$objModel->getDiscount();
+                $quantityAndPrice=$objModel->getQuantityAndPrice($user_id);
+                $discount=$objModel->getDiscount($user_id);
                 $paymentId=$_POST['payment'];
-                $objModel->setOrder($_SESSION[ 'BookshopID' ], $quantityAndPrice, $paymentId, $discount);
+                $res = $objModel->setOrder($_SESSION[ 'BookshopID' ], $quantityAndPrice, $paymentId, $discount);
+			//	if($res) {					
                 $objView = DataContModel::getInstance();
 				$resArr = $objModel->getArray();
                 $objView->setStartPage('thankyou.html')->setData($resArr);
+			//	}
             }
 
         }
