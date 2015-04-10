@@ -1,11 +1,21 @@
 <?php
 
 
+/**
+ * Class CabinetModel
+ */
 class CabinetModel {
+    /**
+     *
+     */
     public function __construct() {
 
     }
 
+    /**
+     * @param $user_id
+     * @return mixed
+     */
     public function getHead($user_id){
         $pdo = DataBaseModel::connect();
         //$user_id = $_SESSION[ 'BookshopID' ];
