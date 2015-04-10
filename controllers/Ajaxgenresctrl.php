@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 class Ajaxgenresctrl {
     public function __construct(){
         $pdo = DataBaseModel::connect();
@@ -15,4 +15,19 @@ class Ajaxgenresctrl {
         DataContModel::getInstance()->setData($listOfGenresBooks);
     }
 
+} */
+/**
+ * Class Ajaxgenresctrl
+ */
+class Ajaxgenresctrl {
+    /**
+     *
+     */
+    public function __construct(){
+        $objModel = new AgentDBModel();
+        $listOfGenresBooks = $objModel->getListOfGenresBooks($_GET[gr_id]);
+        DataContModel::getInstance()->setData($listOfGenresBooks);
+    }
+
 } 
+
