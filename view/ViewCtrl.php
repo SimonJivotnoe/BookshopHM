@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * Class ViewCtrl
+ */
 class ViewCtrl
 {
+    /**
+     *
+     */
     public function __construct()
     {
         $objView = DataContModel::getInstance();
