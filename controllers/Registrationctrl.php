@@ -1,5 +1,5 @@
 <?php
-
+/*
 class Registrationctrl
 {
     private $check = false;
@@ -42,6 +42,69 @@ class Registrationctrl
 
                             }*/
                             header('Location: /~user1/PHP/Bookshop/index.php');
+                            exit;
+                            //$objView->setStartPage('index.html')->setInfoFlag('newcomer');
+                            /*$objSession = new SessionModel();
+                            $objSession->add($name,'bookshop');*/
+                        } else {
+
+                        }
+                    }
+                } else {
+                    $objView->setData($result)->setStartPage('registration.html');
+                }
+            } else {
+                $objView->setStartPage('registration.html')->setData($objValidation->getResult());
+            }
+
+        }
+    }
+}*/
+
+/**
+ * Class Registrationctrl
+ */
+class Registrationctrl
+{
+    private $check = false;
+    private $localStorageData;
+
+    /**
+     *
+     */
+    public function __construct()
+    {
+        $objSess = new SessionModel();
+        $sesCheck = $objSess->read('BookshopLogin');
+        $objModel = new AgentDBModel();
+        if ( $sesCheck) {
+            header('Location: /~user1/PHP/Bookshop/index.php');
+            exit;
+        } else {
+            $objView = DataContModel::getInstance();
+            $objValidation = new ValidatorModel();
+            if ( ! empty($_POST[ 'registration' ])) {
+                $objValidation = new ValidatorModel();
+                $result = $objValidation->validateInputs();
+                $name = $objValidation->getName();
+                $pass = md5($objValidation->getPass() . SALT);
+                $email = $objValidation->getEmail();
+                if ($result === true) {
+                    $arr = $objValidation->getResult();
+                    $result = $objModel->selectUserOnReg($name);
+                    if ( ! empty($result)) {
+                        $arr[ '%LOGIN%' ] = 'this login already exist';
+                        $objView->setData($arr)->setStartPage('registration.html');
+                    } else {
+                        $res = $objModel->selectAllUsers($name, $pass, $email);
+                        if ($res > 0) {
+                            $objView->setInfoFlag('newcomer');
+                            /*$json = $objView->getData();
+
+                            if ($check) {
+
+                            }*/
+                            header('Location: /');
                             exit;
                             //$objView->setStartPage('index.html')->setInfoFlag('newcomer');
                             /*$objSession = new SessionModel();
