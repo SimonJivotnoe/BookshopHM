@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 class IndexPalette
 {
     private $repArr = array('%AUTHORIZATION%' => '<form method="POST" action="index.php?page=authorizationctrl" class="col-md-4 authorization">
@@ -56,6 +56,53 @@ class IndexPalette
         <a href="index.php?page=cabinetctrl">
         <span class="glyphicon glyphicon-book cabinet pull-left" aria-hidden="true"></span></a>
     </div>';
+                return $this->repArr;
+            }
+
+        }
+    }
+} */
+
+/**
+ * Class IndexPalette
+ */
+class IndexPalette
+{
+    private $repArr = array('%AUTHORIZATION%' => '', '%NEWCOMER%' => '',);
+
+    /**
+     *
+     */
+    public function __construct()
+    {
+
+    }
+
+    /**
+     * @return array
+     */
+    public function getArr()
+    {
+        $obj = DataContModel::getInstance();
+        $res = $obj->getInfoFlag();
+        $sub = new SubstitutionModel();
+        $objSess = new SessionModel();
+        $sesCheck = $objSess->read('BookshopLogin');
+        if ( ! $sesCheck) {
+            $this->repArr['%AUTHORIZATION%'] = $sub->subHTMLReplace('indexGuest.html', array());
+            return $this->repArr;
+        } else {
+            if ($res == 'newcomer') {
+                /*$this->repArr[ '%NEWCOMER%' ] = 'Registration successful. Now Log in and buy books
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>';
+                $obj->clearInfoFlag();
+
+                return $this->repArr;*/
+
+            } else {
+
+                $this->repArr[ '%AUTHORIZATION%' ] = $sub->subHTMLReplace('indexUser.html', array(
+                    '%USER%' => $_SESSION[ 'BookshopLogin' ]));
                 return $this->repArr;
             }
 
