@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse%I%">
+                <span class="col-md-4 accTitle">%DATE_TIME%</span>
+                <span class="col-md-4 accTitle">%PRICE_TOTAL%</span>
+                <span class="col-md-4 accTitle">%ORDER_STATUS%</span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapse%I%" class="panel-collapse collapse">
+        <div class="panel-body">
+            <table class="table col-md-8 table-striped">
+                <tbody>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+                %TABLEROW%
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
