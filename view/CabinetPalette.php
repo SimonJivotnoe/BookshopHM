@@ -1,5 +1,5 @@
 <?php
-
+/*
 
 class CabinetPalette {
     private $repArr = array('%CABINET%' => '');
@@ -58,6 +58,62 @@ class CabinetPalette {
             </div>
         </div>';
             $i++;
+        }
+        $this->repArr['%CABINET%'] = $output;
+        return $this->repArr;
+    }
+} */
+
+/**
+ * Class CabinetPalette
+ */
+class CabinetPalette {
+    private $repArr = array('%CABINET%' => '');
+
+    /**
+     *
+     */
+    public function __construct()
+    {
+
+    }
+
+    /**
+     * @return array
+     */
+    public function getArr()
+    {
+        $pdo = DataBaseModel::connect();
+        $res = DataContModel::getInstance()->getData();
+        $sub = new SubstitutionModel();
+        $i = 1;
+        $output = '';
+        $tableRow = '';
+        foreach ($res as $key => $val){
+            $order_id = (int)$val['order_id'];
+            $tableBody = array('%DATE_TIME%' => $val['date_time'],
+                               '%PRICE_TOTAL%' => $val['price'],
+                               '%ORDER_STATUS%' => $val['order_status'],
+                               '%I%' => $i,);
+            $quantity = $pdo->select('book_id, quantity')
+                ->from('book_to_order')
+                ->where("order_id = '$order_id'")
+                ->exec();
+            foreach ($quantity as $keyQ => $value){
+                $book_id = $value['book_id'];
+                $quan = $value['quantity'];
+                $bookNameAndPrice = $pdo->select('name, price')
+                    ->from('books')
+                    ->where("id = '$book_id'")
+                    ->exec();
+                $trArray = array('%BOOKNAME%' => $bookNameAndPrice[0]['name'],
+                                  '%BOOKPRICE%' => $bookNameAndPrice[0]['price'],
+                                  '%QUANTITY%' => $quan,);
+                $tableRow .= $sub->subHTMLReplace('subCabinetTR.html', $trArray);
+            }
+            $i++;
+            $tableBody['%TABLEROW%'] = $tableRow;
+            $output .= $sub->subHTMLReplace('subCabinet.html', $tableBody);
         }
         $this->repArr['%CABINET%'] = $output;
         return $this->repArr;
