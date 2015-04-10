@@ -64,10 +64,11 @@ class IndexPalette
 } */
 
 /**
- * Class CabinetPalette
+ * Class IndexPalette
  */
-class CabinetPalette {
-    private $repArr = array('%CABINET%' => '');
+class IndexPalette
+{
+    private $repArr = array('%AUTHORIZATION%' => '', '%NEWCOMER%' => '',);
 
     /**
      *
@@ -82,42 +83,29 @@ class CabinetPalette {
      */
     public function getArr()
     {
-        $pdo = DataBaseModel::connect();
-        $res = DataContModel::getInstance()->getData();
+        $obj = DataContModel::getInstance();
+        $res = $obj->getInfoFlag();
         $sub = new SubstitutionModel();
-        $i = 1;
-        $output = '';
-        $this->repArr['%CABINET%'] = $output;
-        foreach ($res as $key => $val){
-            $trArray = array();
-            $tableRow = '';
-            $order_id = (int)$val['order_id'];
-            $tableBody = array('%DATE_TIME%' => $val['date_time'],
-                               '%PRICE_TOTAL%' => $val['price'],
-                               '%ORDER_STATUS%' => $val['order_status'],
-                               '%I%' => $i,);
-            $quantity = $pdo->select('book_id, quantity')
-                ->from('book_to_order')
-                ->where("order_id = '$order_id'")
-                ->exec();
-            foreach ($quantity as $keyQ => $value){
-                $book_id = $value['book_id'];
-                $quan = $value['quantity'];
-                $bookNameAndPrice = $pdo->select('name, price')
-                    ->from('books')
-                    ->where("id = '$book_id'")
-                    ->exec();
-                $trArray = array('%BOOKNAME%' => $bookNameAndPrice[0]['name'],
-                                  '%BOOKPRICE%' => $bookNameAndPrice[0]['price'],
-                                  '%QUANTITY%' => $quan,);
-                $tableRow .= $sub->subHTMLReplace('subCabinetTR.html', $trArray);
+        $objSess = new SessionModel();
+        $sesCheck = $objSess->read('BookshopLogin');
+        if ( ! $sesCheck) {
+            $this->repArr['%AUTHORIZATION%'] = $sub->subHTMLReplace('indexGuest.html', array());
+            return $this->repArr;
+        } else {
+            if ($res == 'newcomer') {
+                /*$this->repArr[ '%NEWCOMER%' ] = 'Registration successful. Now Log in and buy books
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>';
+                $obj->clearInfoFlag();
+
+                return $this->repArr;*/
+
+            } else {
+
+                $this->repArr[ '%AUTHORIZATION%' ] = $sub->subHTMLReplace('indexUser.html', array(
+                    '%USER%' => $_SESSION[ 'BookshopLogin' ]));
+                return $this->repArr;
             }
-            $i++;
-            $tableBody['%TABLEROW%'] = $tableRow;
-            $output .= $sub->subHTMLReplace('subCabinet.html', $tableBody);
+
         }
-        $this->repArr['%CABINET%'] = $output;
-        
-        return $this->repArr;
     }
 } 
