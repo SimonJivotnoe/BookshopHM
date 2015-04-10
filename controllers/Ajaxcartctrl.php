@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 class Ajaxcartctrl
 {
     public function __construct()
@@ -37,6 +37,39 @@ class Ajaxcartctrl
                 ->from("books b JOIN cart c ON c.book_id=b.id")
                 ->where("c.user_id ='$user_id'")
                 ->exec();
+            DataContModel::getInstance()->setData($res);
+    }}
+} */
+/**
+ * Class AjaxCartCtrl
+ */
+
+class Ajaxcartctrl
+{
+    /**
+     *
+     */
+    public function __construct()
+    {
+        $pdo = DataBaseModel::connect();
+        $objModel = new AgentDBModel();
+        $user_id = $_SESSION[ 'BookshopID' ];
+        $book_id = $_GET[ 'bk_id' ];
+        $quantity = $_GET[ 'quantity' ];
+        $delete = $_GET['delete'];
+        if (!empty($delete)) {
+            $objModel->deleteFromCart($user_id, $book_id);
+            DataContModel::getInstance()->setData(array());
+        } else {
+        if (!empty($book_id)) {
+            $resSel = $objModel->getBookIDAndQuantity($user_id, $book_id);
+            if (count($resSel) == 0 && $user_id != 0) {
+                $objModel->insertBookToCart($user_id, $book_id);
+            } else {
+                $objModel->updateBookToCart($user_id, $book_id, $quantity);
+            }
+        }
+            $res = $objModel->allBooksInCart($user_id);
             DataContModel::getInstance()->setData($res);
     }}
 } 
